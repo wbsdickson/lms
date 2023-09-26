@@ -1,11 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
 
 const Page = () => {
-    return (
-        <>
-            <UserButton afterSignOutUrl="/"></UserButton>
-        </>
-    );
+    return <>halo</>;
 };
 
 export default Page;
