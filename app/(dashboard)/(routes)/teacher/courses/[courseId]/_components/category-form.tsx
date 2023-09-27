@@ -64,7 +64,6 @@ export const CategoryForm = ({ initialData, courseId, options }: CategoryFormPro
                     ) : (
                         <>
                             <Pencil className="h-4 w-4 mr-2" />
-                            Edit category
                         </>
                     )}
                 </Button>
