@@ -21,10 +21,10 @@ export const NavbarRoutes = () => {
     return (
         <>
             {isSearchPage && (
-        <div className="hidden md:block">
-          <SearchInput />
-        </div>
-      )}
+                <div className="hidden md:block">
+                    <SearchInput />
+                </div>
+            )}
             <div className="flex gap-x-2 ml-auto">
                 {isTeacherPage || isCoursePage ? (
                     <Link href="/">
@@ -33,7 +33,7 @@ export const NavbarRoutes = () => {
                             Exit
                         </Button>
                     </Link>
-                ) : true ? (
+                ) : isTeacher(userId) ? (
                     <Link href="/teacher/courses">
                         <Button size="sm" variant="ghost">
                             Teacher mode
