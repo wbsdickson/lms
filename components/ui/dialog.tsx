@@ -30,12 +30,12 @@ const DialogOverlay = React.forwardRef<
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-type Test = {
-    showClose: boolean;
+type CustomProps = {
+    showClose?: boolean;
 };
 const DialogContent = React.forwardRef<
     React.ElementRef<typeof DialogPrimitive.Content>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & Test
+    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & CustomProps
 >(({ className, children, showClose, ...props }, ref) => (
     <DialogPortal>
         <DialogOverlay />
