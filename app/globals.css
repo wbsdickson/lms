@@ -77,4 +77,7 @@
 .ql-container {
     font-size: 16px !important;
 }
+[role="dialog"]:focus-visible {
+  outline: none !important;
+}
 @import "~@uploadthing/react/styles.css";
