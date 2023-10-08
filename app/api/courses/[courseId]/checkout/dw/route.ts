@@ -10,19 +10,22 @@ export type CheckoutItem = {
     quantity: number;
     price: number;
     img?: string;
+    id: string;
 };
 export type User = {
     name: string;
     email: string;
+    id: string;
 };
 export type Checkout = {
     items: Array<CheckoutItem>;
     to: string;
     from: User;
+    taxRate: number;
 
     successURL: string;
     failURL: string;
-    taxRate: number;
+    webhook: string;
 };
 
 export async function POST(req: Request, { params }: { params: { courseId: string } }) {
@@ -45,12 +48,14 @@ export async function POST(req: Request, { params }: { params: { courseId: strin
         let checkout: Checkout = {
             to: "Dickson LMS Limited",
             from: {
+                id: user.id,
                 name: user.firstName + "_" + user.lastName,
                 email: user.emailAddresses[0].emailAddress,
             },
             taxRate: 0,
             items: [
                 {
+                    id: course.id,
                     name: course.title,
                     quantity: 1,
                     price: course?.price || 0,
@@ -59,6 +64,7 @@ export async function POST(req: Request, { params }: { params: { courseId: strin
             ],
             successURL: process.env.DWPAY_SUCCESS_URL!,
             failURL: process.env.DWPAY_FAIL_URL!,
+            webhook: `${process.env.NEXT_PUBLIC_APP_URL}/api/dw-webhook`,
         };
         const response = await axios.post(process.env.DWPAY_URL!, checkout);
 

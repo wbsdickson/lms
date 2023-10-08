@@ -15,11 +15,11 @@ interface CourseEnrollButtonProps {
 export const CourseEnrollButton = ({ price, courseId }: CourseEnrollButtonProps) => {
     const [isLoading, setIsLoading] = useState(false);
 
-    const onDKPay = async () => {
+    const onDWPay = async () => {
         try {
             setIsLoading(true);
 
-            const response = await axios.post(`/api/courses/${courseId}/checkout/dk`);
+            const response = await axios.post(`/api/courses/${courseId}/checkout/dw`);
 
             window.location.assign(response.data.url);
         } catch {
@@ -44,7 +44,7 @@ export const CourseEnrollButton = ({ price, courseId }: CourseEnrollButtonProps)
 
     return (
         <div>
-            <Button onClick={onDKPay} disabled={isLoading} size="sm" className="w-full md:w-auto mr-4">
+            <Button onClick={onDWPay} disabled={isLoading} size="sm" className="w-full md:w-auto mr-4">
                 DW Pay {formatPrice(price)}
             </Button>
             <Button onClick={onClick} disabled={isLoading} size="sm" className="w-full md:w-auto">

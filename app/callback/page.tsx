@@ -10,11 +10,12 @@ const CallbackPage = () => {
     const searchParams = useSearchParams();
     const isSuccess = searchParams.get("success") ? searchParams.get("success") === "1" : false;
     const isFail = searchParams.get("fail") ? searchParams.get("fail") === "1" : false;
+    const courseId = searchParams.get("courseId");
     const { onOpen } = useConfettiStore();
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-            router.push("/");
+            router.push(courseId ? `${process.env.NEXT_PUBLIC_APP_URL}/courses/${courseId}` : "/");
         }, 5000);
 
         return () => clearTimeout(timeoutId);
