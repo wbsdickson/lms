@@ -44,7 +44,7 @@ export const CourseEnrollButton = ({ price, courseId }: CourseEnrollButtonProps)
 
     return (
         <div>
-            <Button onClick={onDWPay} disabled={isLoading} size="sm" className="w-full md:w-auto mr-4">
+            <Button onClick={onDWPay} disabled={isLoading} size="sm" className="w-full md:w-auto my-4 md:my-0 md:mx-4">
                 DW Pay {formatPrice(price)}
             </Button>
             <Button onClick={onClick} disabled={isLoading} size="sm" className="w-full md:w-auto">
