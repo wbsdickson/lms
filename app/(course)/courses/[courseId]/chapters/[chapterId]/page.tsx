@@ -10,6 +10,7 @@ import { Preview } from "@/components/preview";
 import { VideoPlayer } from "./_components/video-player";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
+import { VideoPlayerBasic } from "./_components/video-player-basic";
 
 const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId: string } }) => {
     const { userId } = auth();
@@ -37,7 +38,7 @@ const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId
             {isLocked && <Banner variant="warning" label="You need to purchase this course to watch this chapter." />}
             <div className="flex flex-col max-w-4xl mx-auto pb-20">
                 <div className="p-4">
-                    <VideoPlayer
+                    {/* <VideoPlayer
                         chapterId={params.chapterId}
                         title={chapter.title}
                         courseId={params.courseId}
@@ -45,7 +46,9 @@ const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId
                         playbackId={muxData?.playbackId!}
                         isLocked={isLocked}
                         completeOnEnd={completeOnEnd}
-                    />
+                    /> */}
+
+                    <VideoPlayerBasic videoUrl={chapter.videoUrl!} isLocked={isLocked} />
                 </div>
                 <div>
                     <div className="p-4 flex flex-col md:flex-row items-center justify-between">
